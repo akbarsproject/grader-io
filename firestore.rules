@@ -1,0 +1,39 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Users can read and write their own data
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Admins can read all user data (teachers, students, etc.)
+    match /users/{document=**} {
+      allow read: if request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
+    }
+    
+    // Exams collection - teachers can create and read
+    match /exams/{examId} {
+      allow read, write: if request.auth != null;
+      // Admins can read all exams
+      allow read: if request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
+      // Limit document size for base64 images (max 1MB)
+      allow create, update: if request.auth != null && 
+        resource.size < 1048576; // 1MB limit
+    }
+    
+    // Essays collection - teachers can create and read
+    match /essays/{essayId} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Students collection - teachers can read
+    match /students/{studentId} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Results collection - teachers can create and read
+    match /results/{resultId} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

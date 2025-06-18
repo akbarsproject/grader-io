@@ -1,0 +1,14 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Answer sheets can be uploaded by authenticated users
+    match /answer_sheets/{allPaths=**} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Essay files can be uploaded by authenticated users
+    match /essay_files/{allPaths=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
