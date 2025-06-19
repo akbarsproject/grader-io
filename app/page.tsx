@@ -61,22 +61,22 @@ export default function Home() {
     return (
       <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
         {/* Hero Section */}
-        <section className="relative w-full py-20 overflow-hidden">
+        <section className="relative w-full py-12 md:py-20 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
-          <div className="container mx-auto text-center space-y-8 relative z-10">
-            <div className="flex justify-center mb-8">
+          <div className="container mx-auto text-center space-y-6 md:space-y-8 relative z-10">
+            <div className="flex justify-center mb-6 md:mb-8">
               <div className="relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-75 animate-pulse"></div>
-                <BookOpen className="relative h-24 w-24 text-white" />
+                <BookOpen className="relative h-16 md:h-24 w-16 md:w-24 text-white" />
               </div>
             </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+            <h1 className="text-4xl md:text-7xl font-extrabold leading-tight tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
               Grader.io
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4">
               Transformasi penilaian ujian dengan AI. Koreksi otomatis, analisis mendalam, dan wawasan real-time untuk pendidikan yang lebih baik.
             </p>
-            <div className="flex justify-center mt-12">
+            <div className="flex justify-center mt-8 md:mt-12 px-4">
               <div className="w-full max-w-sm backdrop-blur-sm bg-white/10 rounded-2xl p-1">
                 <LoginPage />
               </div>
@@ -85,12 +85,12 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section className="py-20 relative">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+        <section className="py-12 md:py-20 relative px-4">
+          <div className="container mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 md:mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
               Fitur Unggulan
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               <Card className="bg-gray-800/50 backdrop-blur-sm border-gray-700 hover:border-blue-500/50 transition-all duration-300">
                 <CardHeader>
                   <div className="flex items-center justify-center mb-4">
@@ -165,9 +165,9 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer className="py-8 bg-gray-900/50 backdrop-blur-sm border-t border-gray-800">
-          <div className="container mx-auto text-center">
-            <p className="text-gray-400">&copy; {new Date().getFullYear()} Grader.io. Dibuat dengan ❤️ untuk pendidikan yang lebih baik.</p>
+        <footer className="py-6 md:py-8 bg-gray-900/50 backdrop-blur-sm border-t border-gray-800">
+          <div className="container mx-auto text-center px-4">
+            <p className="text-sm md:text-base text-gray-400">&copy; {new Date().getFullYear()} Grader.io. Dibuat dengan ❤️ untuk pendidikan yang lebih baik.</p>
           </div>
         </footer>
       </div>

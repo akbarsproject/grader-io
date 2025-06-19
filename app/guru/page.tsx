@@ -124,14 +124,16 @@ export default function GuruDashboard() {
 
   console.log("GuruDashboard: User is authorized, rendering content.")
   return (
-    <div className="container mx-auto py-6 space-y-6">
+    <div className="container mx-auto py-4 md:py-6 px-4 space-y-4 md:space-y-6">
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
-        <TabsList>
-          <TabsTrigger value="correction">Koreksi Ujian</TabsTrigger>
-          <TabsTrigger value="exams">Ujian Saya</TabsTrigger>
-          <TabsTrigger value="students">Data Siswa</TabsTrigger>
-          <TabsTrigger value="reports">Laporan</TabsTrigger>
-        </TabsList>
+        <div className="overflow-x-auto -mx-4 px-4">
+          <TabsList className="w-full md:w-auto inline-flex">
+            <TabsTrigger value="correction" className="text-sm md:text-base">Koreksi Ujian</TabsTrigger>
+            <TabsTrigger value="exams" className="text-sm md:text-base">Ujian Saya</TabsTrigger>
+            <TabsTrigger value="students" className="text-sm md:text-base">Data Siswa</TabsTrigger>
+            <TabsTrigger value="reports" className="text-sm md:text-base">Laporan</TabsTrigger>
+          </TabsList>
+        </div>
 
         <TabsContent value="correction">
           {/* Pass currentUser to CombinedCorrection */}
@@ -141,17 +143,17 @@ export default function GuruDashboard() {
         <TabsContent value="exams">
           <Card>
             <CardHeader>
-              <CardTitle>Ujian Saya</CardTitle>
-              <CardDescription>Kelola ujian yang telah dibuat</CardDescription>
+              <CardTitle className="text-xl md:text-2xl">Ujian Saya</CardTitle>
+              <CardDescription className="text-sm md:text-base">Kelola ujian yang telah dibuat</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">Total Ujian</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">{stats.totalExams}</div>
+                    <div className="text-xl md:text-2xl font-bold">{stats.totalExams}</div>
                   </CardContent>
                 </Card>
                 <Card>
@@ -159,7 +161,7 @@ export default function GuruDashboard() {
                     <CardTitle className="text-sm font-medium">Ujian Aktif</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">{stats.activeExams}</div>
+                    <div className="text-xl md:text-2xl font-bold">{stats.activeExams}</div>
                   </CardContent>
                 </Card>
               </div>
@@ -170,17 +172,17 @@ export default function GuruDashboard() {
         <TabsContent value="students">
           <Card>
             <CardHeader>
-              <CardTitle>Data Siswa</CardTitle>
-              <CardDescription>Kelola data siswa dan kelas</CardDescription>
+              <CardTitle className="text-xl md:text-2xl">Data Siswa</CardTitle>
+              <CardDescription className="text-sm md:text-base">Kelola data siswa dan kelas</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">Total Siswa</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">{stats.totalStudents}</div>
+                    <div className="text-xl md:text-2xl font-bold">{stats.totalStudents}</div>
                   </CardContent>
                 </Card>
                 <Card>
@@ -188,7 +190,7 @@ export default function GuruDashboard() {
                     <CardTitle className="text-sm font-medium">Koreksi Tertunda</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">{stats.pendingCorrections}</div>
+                    <div className="text-xl md:text-2xl font-bold">{stats.pendingCorrections}</div>
                   </CardContent>
                 </Card>
               </div>
@@ -199,12 +201,11 @@ export default function GuruDashboard() {
         <TabsContent value="reports">
           <Card>
             <CardHeader>
-              <CardTitle>Laporan</CardTitle>
-              <CardDescription>Lihat dan unduh laporan ujian</CardDescription>
+              <CardTitle className="text-xl md:text-2xl">Laporan</CardTitle>
+              <CardDescription className="text-sm md:text-base">Lihat laporan dan analisis</CardDescription>
             </CardHeader>
             <CardContent>
-              {/* Add reports component here */}
-              <p className="text-sm text-gray-500">Fitur dalam pengembangan</p>
+              <p>Fitur laporan akan segera hadir</p>
             </CardContent>
           </Card>
         </TabsContent>
