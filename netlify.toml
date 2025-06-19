@@ -11,7 +11,7 @@
   NPM_CONFIG_PACKAGE_LOCK = "true"
 
 [[plugins]]
-  package = "@netlify/plugin-nextjs"
+  package = "@netlify/next"
 
 # Cache configuration
 [[headers]]
