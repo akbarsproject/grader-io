@@ -4,8 +4,9 @@ import type React from "react"
 
 import { useState } from "react"
 import { Eye, EyeOff, BookOpen } from "lucide-react"
-import { auth } from "@/lib/firebase"
+import { auth, db } from "@/lib/firebase"
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth"
+import { doc, setDoc } from "firebase/firestore"
 import { useToast } from "@/components/ui/use-toast"
 
 export function LoginPage() {
@@ -22,10 +23,19 @@ export function LoginPage() {
 
     try {
       if (isRegister) {
-        await createUserWithEmailAndPassword(auth, email, password)
+        // Create user in Firebase Auth
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+        
+        // Create user document in Firestore
+        await setDoc(doc(db, "users", userCredential.user.uid), {
+          email: email,
+          role: "teacher", // Default role for new registrations
+          createdAt: new Date().toISOString()
+        })
+
         toast({
           title: "Registrasi berhasil",
-          description: "Akun Anda telah dibuat",
+          description: "Akun guru Anda telah dibuat",
         })
       } else {
         await signInWithEmailAndPassword(auth, email, password)
